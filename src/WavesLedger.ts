@@ -7,7 +7,7 @@ import { default as TransportU2F } from '@ledgerhq/hw-transport-u2f';
 
 declare const Buffer: any;
 
-const ADDRES_PREFIX = '44\'/5741564\'/0\'/0\'/';
+const ADDRES_PREFIX = '44\'/353\'/0\'/0\'/';
 
 export class WavesLedger {
 
