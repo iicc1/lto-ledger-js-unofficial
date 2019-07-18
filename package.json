@@ -1,12 +1,12 @@
 {
-  "name": "@waves/ledger",
+  "name": "@iicc1/ledgerjs",
   "version": "3.2.0",
-  "description": "Waves ladger lib for browser",
+  "description": "Modified Waves ledger lib for browser",
   "main": "lib/WavesLedger.js",
   "types": "lib/WavesLedger.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wavesplatform/waves-ledger-js.git"
+    "url": "https://github.com/iicc1/lto-ledger-js-unofficial"
   },
   "scripts": {
     "build": "tsc && node_modules/.bin/browserify lib/WavesLedger.js -s WavesLedgerJs -u @waves/signature-generator -u @ledgerhq/hw-transport-u2f -o dist/waves-ledger.js && npm run build_transport",
@@ -15,11 +15,6 @@
     "build_ledger_monitor": "npm run build && node_modules/.bin/browserify ledgerTest/index.js -o dist/ledgerTest.js -x @waves/waves-signature-generator -t [ babelify ] -t [browserify-global-shim [\"@waves/waves-signature-generator\"=\"wavesSignatureGenerator\"] ]"
   },
   "keywords": [],
-  "author": {
-    "name": "Waves Platform",
-    "email": "info@wavesplatform.com",
-    "url": "https://wavesplatform.com"
-  },
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.54",
