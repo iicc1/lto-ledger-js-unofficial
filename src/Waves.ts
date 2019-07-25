@@ -67,27 +67,17 @@ export class Waves {
         return { publicKey, address, statusCode };
     }
 
-    async signTransaction(path: string, amountPrecession: number, txData: Uint8Array, version = 2): Promise<string> {
-
-        const transactionType = txData[0];
-        const version2 = [transactionType, version];
-        //const type = await this._versionNum();
-
-        //if (transactionType === 4) {
-        //    if (type === 0) {
-        //        return await this.signSomeData(path, txData);
-        //    }
-        //}
+    async signTransaction(path: string, amountPrecession: number, txData: Uint8Array, version = 1): Promise<string> {
 
         const prefixData = Buffer.concat([
             Waves.splitPath(path),
             Buffer.from([
-                amountPrecession,
+                WAVES_CONFIG.WAVES_PRECISION,
                 WAVES_CONFIG.WAVES_PRECISION,
             ]),
         ]);
 
-        const dataForSign = await this._fillData(prefixData, txData, version2);
+        const dataForSign = await this._fillData(prefixData, txData);
         return await this._signData(dataForSign);
     }
 
@@ -175,15 +165,7 @@ export class Waves {
     }
 
     protected async _fillData(prefixBuffer: Uint8Array, dataBuffer: Uint8Array, ver2 = [0]) {
-        const type = await this._versionNum();
-
-        switch (type) {
-            case 0:
-                return Buffer.concat([prefixBuffer, dataBuffer]);
-            case 1:
-            default:
-                return Buffer.concat([prefixBuffer, Buffer.from(ver2), dataBuffer]);
-        }
+        return Buffer.concat([prefixBuffer, dataBuffer]);
     }
 
     protected async _signData(dataBufferAsync: Uint8Array): Promise<string> {
