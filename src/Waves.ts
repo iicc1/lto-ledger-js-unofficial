@@ -71,13 +71,13 @@ export class Waves {
 
         const transactionType = txData[0];
         const version2 = [transactionType, version];
-        const type = await this._versionNum();
+        //const type = await this._versionNum();
 
-        if (transactionType === 4) {
-            if (type === 0) {
-                return await this.signSomeData(path, txData);
-            }
-        }
+        //if (transactionType === 4) {
+        //    if (type === 0) {
+        //        return await this.signSomeData(path, txData);
+        //    }
+        //}
 
         const prefixData = Buffer.concat([
             Waves.splitPath(path),
