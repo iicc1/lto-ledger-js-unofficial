@@ -67,11 +67,11 @@ export class WavesLedger {
         }
     }
 
-    async getUserDataById(id: number): Promise<IUser> {
+    async getUserDataById(id: number, verify: boolean): Promise<IUser> {
         try {
             const waves = await this.getTransport();
             const path = this.getPathById(id);
-            const userData = await waves.getWalletPublicKey(path, false);
+            const userData = await waves.getWalletPublicKey(path, verify);
             return {
                 ...userData, id, path
             };
