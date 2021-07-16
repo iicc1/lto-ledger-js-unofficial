@@ -99,7 +99,7 @@ export class WavesLedger {
 
         try {
             for (let id = from; id <= from + limit; id++) {
-                const userData = await this.getUserDataById(id);
+                const userData = await this.getUserDataById(id, false);
                 usersData.push(userData);
             }
         } catch (e) {
@@ -188,7 +188,7 @@ export class WavesLedger {
         this._error = null;
 
         try {
-            await this.getUserDataById(1);
+            await this.getUserDataById(1, false);
         } catch (e) {
             this._error = e;
             return false;
