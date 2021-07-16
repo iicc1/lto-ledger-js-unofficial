@@ -1,6 +1,6 @@
 {
   "name": "lto-ledger-js-unofficial-test",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Modified Waves Ledger Libs to support LTO Network blockchain",
   "main": "lib/WavesLedger.js",
   "types": "lib/WavesLedger.d.ts",
